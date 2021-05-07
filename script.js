@@ -22,16 +22,15 @@ userSearch.addEventListener("submit", async (event) => {
   let gameData = await getMatches();
 
   for (let i = 0; i <= 4; i++) {
-    let retrieveData = await createObjectFromData(gameData[i]);
-    await createMatchDiv(retrieveData);
+    if (gameData[i].info.tft_set_number == 5) {
+      let retrieveData = await createObjectFromData(gameData[i]);
+      await createMatchDiv(retrieveData);
+    } else {
+      window.alert(`${i} set 5 games found`);
+      i = 10;
+    }
   }
   loader.classList.toggle("hidden");
-
-  // gameData.forEach(async (game) => {
-  //   let retrievedData = await createObjectFromData(game);
-  //   await createMatchDiv(retrievedData);
-  // });
-
   console.log(searchInput.value);
 });
 
