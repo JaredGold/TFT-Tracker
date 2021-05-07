@@ -1,5 +1,6 @@
 const searchInput = document.getElementById("search");
 const userSearch = document.getElementById("search-form");
+const loader = document.getElementById("loader");
 
 // gets the latest 8 games the user has played
 const searchApi = "https://tft-data-backend.herokuapp.com/search/";
@@ -15,13 +16,21 @@ const traitImgAPI = "https://files-for-hackathon.netlify.app/traits/";
 // on form submit prevents the reload and pulls the user data from the searched params
 userSearch.addEventListener("submit", async (event) => {
   event.preventDefault();
+  loader.classList.toggle("hidden");
   const matchesContainer = document.getElementById("matches-container");
   matchesContainer.innerHTML = "";
   let gameData = await getMatches();
-  gameData.forEach(async (game) => {
-    let retrievedData = await createObjectFromData(game);
-    await createMatchDiv(retrievedData);
-  });
+
+  for (let i = 0; i <= 4; i++) {
+    let retrieveData = await createObjectFromData(gameData[i]);
+    await createMatchDiv(retrieveData);
+  }
+  loader.classList.toggle("hidden");
+
+  // gameData.forEach(async (game) => {
+  //   let retrievedData = await createObjectFromData(game);
+  //   await createMatchDiv(retrievedData);
+  // });
 
   console.log(searchInput.value);
 });

@@ -1,3 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+h6 {
+  margin: 0;
+  text-align: center;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -38,7 +57,7 @@ nav > ul > * + * {
   margin-left: 1rem;
 }
 
-#item-grid-container{
+#item-grid-container {
   display: grid;
   align-items: space-evenly;
   justify-content: center;
@@ -51,11 +70,9 @@ nav > ul > * + * {
   border: solid black 1px;
 }
 
-.item:hover{
+.item:hover {
   opacity: 50%;
 }
-
-
 
 /* Tooltip container */
 .tooltip {
